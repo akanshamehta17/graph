@@ -1,0 +1,33 @@
+<html>
+
+<head>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="app.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+</head>
+
+<body ng-app = "my-app" ng-controller="mainCtrl">
+
+        <div> <d3chart data="data" dim="dim"></d3chart>
+                <d3chartfooter></d3chartfooter><br><br>                
+                <form ng-submit="submit(selectedWidth)" style="margin-left:400px;">
+                   <select name="selectElem" ng-model="selectedWidth" ng-options="w for w in options">
+                      <option value="">Select Width</option>
+                    </select>
+                    <button type="submit">Update Width</button>
+                    <div id="footer" style="margin-left:-360px;margin-top:-17px;"></div>
+                  </form>
+            
+        </div>
+        
+        <style>
+          .d3-tip{
+              background-color: white;
+          }
+        </style>
+
+</body>
+
+</html>
