@@ -5,27 +5,37 @@
         <script src="app.js"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
         <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-
+        <link rel='stylesheet' href='https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+        <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
 </head>
 
 <body ng-app = "my-app" ng-controller="mainCtrl">
 
-        <div> <d3chart data="data" dim="dim"></d3chart>
-                <d3chartfooter></d3chartfooter><br><br>                
-                <form ng-submit="submit(selectedWidth)" style="margin-left:400px;">
-                   <select name="selectElem" ng-model="selectedWidth" ng-options="w for w in options">
+        <div> <d3chart data="data" dim="dim"></d3chart><br><br>
+       <d3chartfooter></d3chartfooter>                
+                <form  style="margin-left:400px;">
+               <!--<select name="selectElem" ng-model="selectedWidth" ng-options="w for w in options">
                       <option value="">Select Width</option>
                     </select>
-                    <button type="submit">Update Width</button>
-                    <div id="footer" style="margin-left:-360px;margin-top:-17px;"></div>
+                    <button type="submit">Update Width</button>-->
+                    <div id="footer" style="margin-left:-360px;margin-top:-10px;"></div><br>
                   </form>
+                  
+                 
             
         </div>
+        <article style="margin-top: 10px;">
+                <h3>Update Width</h3>
+               <rzslider rz-slider-model="widthSlider.value" rz-slider-high="widthSlider.maxValue" rz-slider-options="widthSlider.options"
+                ng-click="onChange(widthSlider.value)" style="width: 1000px;"></rzslider>
+           </article>
         
         <style>
           .d3-tip{
               background-color: white;
           }
+          
         </style>
 
 </body>

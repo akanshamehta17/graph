@@ -1,4 +1,4 @@
-var app = angular.module('my-app', []);
+var app = angular.module('my-app', ['rzModule','ui.bootstrap']);
 app.controller('mainCtrl', ['$scope',
  function($scope) {
 
@@ -13,15 +13,24 @@ app.controller('mainCtrl', ['$scope',
 
 
     $scope.dim = [
-        {"width":400,"height":360}];
+        {"width":300,"height":360}];
 
 
-    $scope.options = [300,350,400,450,500];
-    $scope.selectedWidth = $scope.options[2];
-    $scope.submit = function(data) {
+    //$scope.options = [300,350,400,450,500];
+    //$scope.selectedWidth = $scope.options[2];
+    $scope.onChange = function(data) {
+        console.log(data);
         $scope.dim = [
             {"width":data,"height":360}
             ];
+   };
+
+   $scope.widthSlider = {
+        minValue: 300,
+        maxValue: 500,
+    options: {
+          stepsArray: [300,350,400,450,500]
+    }
    };
 
    
@@ -72,7 +81,7 @@ app.directive('d3chart', ['$parse', '$window', function($parse, $window){
     
             // Initialize histogram 
             var svg = d3.select(".histogram-chart")
-                .attr("width", width + 100)
+                .attr("width", width + 300)
                 .attr("height", height + 40)
               .append("g")
                 .attr("transform", "translate(" + 50 + "," + 20 + ")");
